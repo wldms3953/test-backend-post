@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-backend-post-deployment
+  labels:
+    app: test-backend-post
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-backend-post
+  template:
+    metadata:
+      labels:
+        app: test-backend-post
+    spec:
+      containers:
+        - name: test-backend-post
+          image: zhiyin22/test-backend-post:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: dev
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+              readOnly: true
+            - name: secret-volume
+              mountPath: /etc/secret
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: test-backend-post-config
+        - name: secret-volume
+          secret:
+            secretName: test-backend-post-secret
