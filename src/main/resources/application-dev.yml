@@ -3,3 +3,6 @@ spring:
     import:
       - file:/etc/config/application-dev.yml
       - file:/etc/secret/application-secret.yml
+
+server:
+  port: 8080
