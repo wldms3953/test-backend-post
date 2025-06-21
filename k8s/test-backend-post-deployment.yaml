@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: test-backend-post
-          image: zhiyin22/test-backend-post:latest
+          image: zhiyin22/test-backend-post:0.0.1
           ports:
             - containerPort: 8080
           env:
