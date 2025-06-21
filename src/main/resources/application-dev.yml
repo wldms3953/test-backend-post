@@ -1,8 +1,5 @@
 spring:
-  config:
-    import:
-      - file:/etc/config/application-dev.yml
-      - file:/etc/secret/application-secret.yml
-
-server:
-  port: 8080
+  datasource:
+    url: jdbc:mysql://k8s-external-post-mysql-service:3306/post
+    username: user
+    password: 1234
